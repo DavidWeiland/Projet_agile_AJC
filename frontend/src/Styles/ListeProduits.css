@@ -1,9 +1,10 @@
-body {
+.createBody {
     align-items: center;
     background-color: #000;
     display: flex;
     justify-content: center;
     height: 100vh;
+    width: 100%;
   }
   
   .form {

@@ -1,34 +1,73 @@
 import {useState, useEffect} from 'react';
-import { Card } from '../Component/Card';
+import { Category } from '../Component/Category';
+import { Row } from '../Component/Row';
+import "../Styles/category.css"
 
-function App() {
+
+function Products() {
     const [data, setData] = useState()
+    const [categories, setCategories] = useState()
 
     useEffect(() => {
-        onclickfunction()
+        getCategories()
+        getProducts()
     }, [])
 
-    const onclickfunction=()=>{
-        fetch('https://fakestoreapi.com/products')
-        .then(res=>res.json())
-        .then (json=>setData(json))
+    const getCategories=()=>{
+        fetch('https://fakestoreapi.com/products/categories')
+            .then(res=>res.json())
+            .then(json=>setCategories(json))
     }
 
+    const getProducts=()=>{
+        fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then (json=>setData(json))
+    }
+
+    const getProductsBetweenCat=(cat)=>{
+        fetch(`https://fakestoreapi.com/products/category/${cat}`)
+            .then(res=>res.json())
+            .then(json=>setData(json))
+    }
+
+
     return (
-        <div className="App">
-        {data?.map(({id, title, category, description, price, image})=>
-            <Card
-            key={`${id}-${title}`}
-            id={id}
-            title = {title}
-            category={category}
-            description={description}
-            price={price}
-            image = {image}
-            />
-        )}
+        <div>
+            <div className='selectContainer'>
+                <Category cat="all" action={()=>getProducts()}/>
+                {categories?.map(cat=>
+                    <Category
+                        key={`k-${cat}`}
+                        cat={cat}
+                        action={()=>getProductsBetweenCat(cat)}
+                    />)}
+            </div>    
+            <div className="container bg-white p-5 mt-5">
+                <table className="table table-image">
+                    <thead className="thead-dark">
+                        <tr className="text-center">
+                        <th>Photo</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Actions</th>
+                        </tr>
+                    </thead>
+                
+                    <tbody id="productList">
+                        {data?.map(({id, title, price, image})=>
+                            <Row
+                                key={`${id}-${title}`}
+                                id={id}
+                                title={title}
+                                price={price}
+                                image={image}
+                            />)}
+                    </tbody>
+                </table>    
+            </div>
         </div>
     );
 }
 
-export default App;
+export default Products;
