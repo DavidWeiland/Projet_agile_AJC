@@ -17,7 +17,7 @@ root.render(
     <Routes>
       <Route path='/' element={<Products/>}/>
       <Route path="/product/:id" element={<Product/>}/>
-      <Route path="/create" element={<Create/>}/>
+      <Route path="/createNewItem" element={<Create/>}/>
     </Routes>
     <Footer />
   </Router>
