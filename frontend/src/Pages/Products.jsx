@@ -1,4 +1,3 @@
-import '../Styles/App.css';
 import {useState, useEffect} from 'react';
 import { Card } from '../Component/Card';
 
