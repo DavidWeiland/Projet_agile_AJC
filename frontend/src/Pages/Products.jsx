@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
-import { Card } from '../Component/Card';
+import { Row } from '../Component/Row';
 
-function App() {
+function Products() {
     const [data, setData] = useState()
 
     useEffect(() => {
@@ -15,20 +15,30 @@ function App() {
     }
 
     return (
-        <div className="App">
-        {data?.map(({id, title, category, description, price, image})=>
-            <Card
-            key={`${id}-${title}`}
-            id={id}
-            title = {title}
-            category={category}
-            description={description}
-            price={price}
-            image = {image}
-            />
-        )}
+        <div className="container bg-white p-5 mt-5">
+            <table className="table table-image">
+                <thead className="thead-dark">
+                    <tr className="text-center">
+                    <th>Photo</th>
+                    <th>Nom</th>
+                    <th>Prix</th>
+                    <th>Actions</th>
+                    </tr>
+                </thead>
+            
+                <tbody id="productList">
+                {data?.map(({id, title, price, image})=>
+                <Row
+                    key={`${id}-${title}`}
+                    id={id}
+                    title={title}
+                    price={price}
+                    image={image}
+                />)}
+                </tbody>
+            </table>    
         </div>
     );
 }
 
-export default App;
+export default Products;
