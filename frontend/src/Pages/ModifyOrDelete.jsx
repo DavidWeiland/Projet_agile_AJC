@@ -2,15 +2,15 @@ import '../Styles/ListeProduits.css'
 import { useState, useEffect } from 'react';
 import {useParams} from 'react-router-dom'
 
-const fakeItem = {id:1, title: "fleur",
-price: 100,
-description: "description",
-image: "https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg",
-category: "category"}
-
 export const ModifyOrDelete=()=>{
-    const [data, setData] = useState(fakeItem)
     const {id} = useParams();
+
+    const [title, setTitle] = useState("")
+    const [price, setPrice] = useState("")
+    const [description, setDescription] = useState("")
+    const [image, setImage] = useState("")
+    /* const [imageUrl, setImageUrl] = useState() */
+    const [category, setCategory] = useState("")
     
     useEffect(() => {
         getOneProduct(id)
@@ -19,15 +19,14 @@ export const ModifyOrDelete=()=>{
     const getOneProduct=(id)=>{
         fetch(`https://fakestoreapi.com/products/${id}`)
         .then(res=>res.json())
-        .then (json=>setData(json))
+        .then (json=>{
+            setTitle(json.title)
+            setPrice(json.price)
+            setDescription(json.description)
+            setImage(json.image)
+            setCategory(json.category)
+        })
     }
-
-    const [title, setTitle] = useState(data?data.title:"")
-    const [price, setPrice] = useState(data?data.price:"")
-    const [description, setDescription] = useState(data?.description)
-    const [image, setImage] = useState(data?.image)
-    /* const [imageUrl, setImageUrl] = useState() */
-    const [category, setCategory] = useState(data?.category)
 
     /* const imageReader = (e)=>{
         e.stopPropagation()

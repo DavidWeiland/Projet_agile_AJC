@@ -1,15 +1,9 @@
 import {useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const fakeItem = {id:1, title: "fleur",
-price: 100,
-description: "description",
-image: "https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg",
-category: "category"}
-
 function App() {
     const {id} = useParams();
-    const [data, setData] = useState(fakeItem)
+    const [data, setData] = useState()
     const navigate=useNavigate()
     
     useEffect(() => {

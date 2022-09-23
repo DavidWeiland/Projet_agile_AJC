@@ -3,12 +3,12 @@ import { useState } from 'react';
 
 export const Create=()=>{
 
-    const [title, setTitle] = useState()
-    const [price, setPrice] = useState()
-    const [description, setDescription] = useState()
-    const [image, setImage] = useState()
+    const [title, setTitle] = useState("")
+    const [price, setPrice] = useState("")
+    const [description, setDescription] = useState("")
+    const [image, setImage] = useState("")
     /* const [imageUrl, setImageUrl] = useState() */
-    const [category, setCategory] = useState()
+    const [category, setCategory] = useState("")
 
     /* const imageReader = (e)=>{
         e.stopPropagation()
