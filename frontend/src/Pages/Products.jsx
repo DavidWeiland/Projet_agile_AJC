@@ -3,7 +3,6 @@ import { Category } from '../Component/Category';
 import { Row } from '../Component/Row';
 import "../Styles/category.css"
 
-
 function Products() {
     const [data, setData] = useState()
     const [categories, setCategories] = useState()

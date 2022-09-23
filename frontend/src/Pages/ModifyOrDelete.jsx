@@ -1,7 +1,9 @@
 import '../Styles/ListeProduits.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import {useParams} from 'react-router-dom'
 
-export const Create=()=>{
+export const ModifyOrDelete=()=>{
+    const {id} = useParams();
 
     const [title, setTitle] = useState("")
     const [price, setPrice] = useState("")
@@ -9,6 +11,22 @@ export const Create=()=>{
     const [image, setImage] = useState("")
     /* const [imageUrl, setImageUrl] = useState() */
     const [category, setCategory] = useState("")
+    
+    useEffect(() => {
+        getOneProduct(id)
+    }, [id])
+    
+    const getOneProduct=(id)=>{
+        fetch(`https://fakestoreapi.com/products/${id}`)
+        .then(res=>res.json())
+        .then (json=>{
+            setTitle(json.title)
+            setPrice(json.price)
+            setDescription(json.description)
+            setImage(json.image)
+            setCategory(json.category)
+        })
+    }
 
     /* const imageReader = (e)=>{
         e.stopPropagation()
@@ -23,9 +41,9 @@ export const Create=()=>{
         fileReader.readAsDataURL(file)
     } */
 
-    const action = ()=>{
-        fetch('https://fakestoreapi.com/products',{
-            method:"POST",
+    const modifyItem = ()=>{
+        fetch(`https://fakestoreapi.com/products/${id}`,{
+            method:"PUT",
             body:JSON.stringify(
                 {
                     title: title,
@@ -40,10 +58,18 @@ export const Create=()=>{
             .then(json=>console.log(json))
     }
 
+    const deleteItem = ()=>{
+        fetch(`https://fakestoreapi.com/products/${id}`,{
+            method:"DELETE",
+        })
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+    }
+
     return(
         <div className="createBody">
             <div className="form">
-                <div className="title">Créer un produit</div>
+                <div className="title">Editer le produit</div>
                 <div className="input-container ic1">
                     <input id="title" className="input" type="text" placeholder=" " value={title} onChange={(e)=>setTitle(e.target.value)}/>
                     <div className="cut"></div>
@@ -71,7 +97,8 @@ export const Create=()=>{
                     {/* <img src={image} alt='' className="input" style={{objectFit:"cover"}}/>
                     <input type="file" className="input2" name="imgfile" accept='image/png, image/jpg, image/jpeg' onChange={(e)=>imageReader(e)}/> */}
                 </div>
-                <button type="text" className="submit" onClick={()=>action()}>Créer le produit</button>
+                <button type="text" className="submit" onClick={()=>modifyItem()}>Modifier le produit</button>
+                <button type="text" className="btn btn-danger submit" onClick={()=>deleteItem()}>Supprimer le produit</button>
             </div>
         </div>
     )
