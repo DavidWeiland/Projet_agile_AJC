@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import { useParams, Link } from 'react-router-dom';
+import '../Styles/AfficherProduit.css'
 
 function App() {
     const {id} = useParams();
