@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import { useParams, Link } from 'react-router-dom';
 import '../Styles/AfficherProduit.css'
+import {url} from '../data/services'
 
 function App() {
     const {id} = useParams();
@@ -11,23 +12,23 @@ function App() {
     }, [id])
     
     const getOneProduct=(id)=>{
-        fetch(`https://fakestoreapi.com/products/${id}`)
+        fetch(`${url}/${id}`)
         .then(res=>res.json())
         .then (json=>setData(json))
     }
     
     return (
         <div>
-            <div id="bloc1" class="container">
-                <div id="bloc2" class="container">
+            <div id="bloc1" className="container">
+                <div id="bloc2" className="container">
                     <h1>{data?.title}</h1>
                 </div>
 
-                <div id="bloc3" class="container">
+                <div id="bloc3" className="container">
                     <h5>{data?.category}</h5>
                 </div>
 
-                <div id="bloc4" class="container">
+                <div id="bloc4" className="container">
                     <div id="bloc5">
                         <img src={data?.image} alt='' width="350" height="350"/>
                     </div>
@@ -39,7 +40,7 @@ function App() {
 
                     <div id="bloc7">
                         <p id="taille">{data?.price} €</p>
-                        <form class="qte">
+                        <form className="qte">
                             <select name="qte" size="1">
                                     <option>1</option>
                                     <option>2</option>
@@ -53,21 +54,21 @@ function App() {
                                     <option>+10</option>
                             </select>
                         </form>
-                        <button id="button" type="button" class="btn btn-primary">Ajouter au panier</button>
+                        <button id="button" type="button" className="btn btn-primary">Ajouter au panier</button>
                         <p id="taille2">En stock</p>
                     </div>
                 </div> 
             </div>
-            <div id="taille3" class="container" >   
-                <ul id="nav1" class="nav nav-tabs">  
-                    <li class="col" className="active"><a data-toggle="tab" href="#home">Description</a></li>  
-                    <li class="col"><a data-toggle="tab" href="#menu1">Fiche Technique</a></li>  
-                    <li class="col"><a data-toggle="tab" href="#menu2">Avis Client</a></li>
-                    <li class="col"><Link to={`/editItem/${id}`}>Edit</Link></li>  
+            <div id="taille3" className="container" >   
+                <ul id="nav1" className="nav nav-tabs">  
+                    <li className="col active"><a data-toggle="tab" href="#home">Description</a></li>  
+                    <li className="col"><a data-toggle="tab" href="#menu1">Fiche Technique</a></li>  
+                    <li className="col"><a data-toggle="tab" href="#menu2">Avis Client</a></li>
+                    <li className="col"><Link to={`/editItem/${id}`}>Edit</Link></li>  
                 </ul>  
                 
-                <div class="tab-content">  
-                    <div id="home" class="tab-pane fade in active">  
+                <div className="tab-content">  
+                    <div id="home" className="tab-pane fade in active">  
                         <h3>Description détaillée</h3>  
                         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra risus ut iaculis viverra. Donec pellentesque, lacus ut lobortis rutrum, 
                             nunc lectus sollicitudin felis, quis iaculis ligula enim eget sem. Etiam malesuada justo ut elit ornare malesuada. Praesent dictum lacinia mauris, 
@@ -82,7 +83,7 @@ function App() {
                             pulvinar ante scelerisque, sodales magna. Praesent eu pretium orci. Mauris vel nisi in lectus fringilla sodales vitae et nulla.
                         </p>  
                     </div>  
-                    <div id="menu1" class="tab-pane fade">  
+                    <div id="menu1" className="tab-pane fade">  
                         <h3>Fiche technique</h3>  
                         <p> In hac habitasse platea dictumst. In faucibus lectus quis purus faucibus, sed venenatis nibh porttitor. Donec sagittis, enim vel ultrices elementum, 
                             libero ligula tincidunt nisi, nec tristique est odio quis libero. Curabitur viverra ligula et enim gravida bibendum. Maecenas fringilla rutrum libero. 
@@ -98,7 +99,7 @@ function App() {
                             Etiam lobortis nunc felis, in lobortis diam gravida eget.
                         </p>  
                     </div>  
-                    <div id="menu2" class="tab-pane fade">  
+                    <div id="menu2" className="tab-pane fade">  
                         <h3>Avis client</h3>  
                         <p>Cras varius bibendum elit, at malesuada purus eleifend et. Donec a imperdiet est. Morbi vehicula lacinia dui, in accumsan elit consectetur egestas. 
                             Vivamus condimentum nibh id neque sollicitudin bibendum. Nulla eu iaculis sem. Aliquam erat volutpat. Proin rhoncus ex augue, quis convallis lectus cursus eget. 

@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import { Category } from '../Component/Category';
 import { Row } from '../Component/Row';
 import "../Styles/category.css"
+import {url} from '../data/services'
 
 function Products() {
     const [data, setData] = useState()
@@ -13,19 +14,19 @@ function Products() {
     }, [])
 
     const getCategories=()=>{
-        fetch('https://fakestoreapi.com/products/categories')
+        fetch(`${url}/categories`)
             .then(res=>res.json())
             .then(json=>setCategories(json))
     }
 
     const getProducts=()=>{
-        fetch('https://fakestoreapi.com/products')
+        fetch(`${url}`)
             .then(res=>res.json())
             .then (json=>setData(json))
     }
 
     const getProductsBetweenCat=(cat)=>{
-        fetch(`https://fakestoreapi.com/products/category/${cat}`)
+        fetch(`${url}/category/${cat}`)
             .then(res=>res.json())
             .then(json=>setData(json))
     }

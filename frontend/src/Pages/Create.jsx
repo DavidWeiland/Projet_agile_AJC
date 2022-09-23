@@ -1,6 +1,8 @@
 import '../Styles/ListeProduits.css'
 import { useState } from 'react';
 
+import { url } from '../data/services';
+
 export const Create=()=>{
 
     const [title, setTitle] = useState("")
@@ -24,7 +26,7 @@ export const Create=()=>{
     } */
 
     const action = ()=>{
-        fetch('https://fakestoreapi.com/products',{
+        fetch(`${url}`,{
             method:"POST",
             body:JSON.stringify(
                 {

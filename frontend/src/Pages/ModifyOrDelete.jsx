@@ -2,6 +2,8 @@ import '../Styles/ListeProduits.css'
 import { useState, useEffect } from 'react';
 import {useParams} from 'react-router-dom'
 
+import { url } from '../data/services';
+
 export const ModifyOrDelete=()=>{
     const {id} = useParams();
 
@@ -17,7 +19,7 @@ export const ModifyOrDelete=()=>{
     }, [id])
     
     const getOneProduct=(id)=>{
-        fetch(`https://fakestoreapi.com/products/${id}`)
+        fetch(`${url}/${id}`)
         .then(res=>res.json())
         .then (json=>{
             setTitle(json.title)
@@ -42,7 +44,7 @@ export const ModifyOrDelete=()=>{
     } */
 
     const modifyItem = ()=>{
-        fetch(`https://fakestoreapi.com/products/${id}`,{
+        fetch(`${url}/${id}`,{
             method:"PUT",
             body:JSON.stringify(
                 {
@@ -59,7 +61,7 @@ export const ModifyOrDelete=()=>{
     }
 
     const deleteItem = ()=>{
-        fetch(`https://fakestoreapi.com/products/${id}`,{
+        fetch(`${url}/${id}`,{
             method:"DELETE",
         })
             .then(res=>res.json())
