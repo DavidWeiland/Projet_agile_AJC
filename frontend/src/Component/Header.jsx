@@ -3,11 +3,11 @@ import {Link} from 'react-router-dom';
 
 function Header(){
     return(
-        <ul>
-            <li><a href="#home">Accueil</a></li>
-            <li><Link to="/">Liste produits</Link></li>
-            <li><Link to="/createNewItem">Création produits</Link></li>
-            <li style={{float:"right"}}><a className="active" href="#about">A propos</a></li>
+        <ul className="headerUl">
+            <li className="headerLi"><a href="#home">Accueil</a></li>
+            <li className="headerLi"><Link to="/">Liste produits</Link></li>
+            <li className="headerLi"><Link to="/createNewItem">Création produits</Link></li>
+            <li className="headerLi" style={{float:"right"}}><a className="active" href="#about">A propos</a></li>
         </ul>
     )
 }
