@@ -3,10 +3,20 @@ import { Category } from '../Component/Category';
 import { Row } from '../Component/Row';
 import "../Styles/category.css"
 
+const fakeItems = [{id:1, title: "fleur",
+price: 100,
+description: "description",
+image: "image",
+category: "category"},{id:2, title: "tulipe",
+price: 200,
+description: "description",
+image: "image",
+category: "category"}]
+const fakeCat = ["vegetal","mineral"]
 
 function Products() {
-    const [data, setData] = useState()
-    const [categories, setCategories] = useState()
+    const [data, setData] = useState(fakeItems)
+    const [categories, setCategories] = useState(fakeCat)
 
     useEffect(() => {
         getCategories()
