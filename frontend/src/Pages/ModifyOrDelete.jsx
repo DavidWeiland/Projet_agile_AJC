@@ -5,7 +5,7 @@ import {useParams} from 'react-router-dom'
 const fakeItem = {id:1, title: "fleur",
 price: 100,
 description: "description",
-image: "image",
+image: "https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg",
 category: "category"}
 
 export const ModifyOrDelete=()=>{

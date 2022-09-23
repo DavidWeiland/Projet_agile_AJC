@@ -6,11 +6,11 @@ import "../Styles/category.css"
 const fakeItems = [{id:1, title: "fleur",
 price: 100,
 description: "description",
-image: "image",
+image: "https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg",
 category: "category"},{id:2, title: "tulipe",
 price: 200,
 description: "description",
-image: "image",
+image: "https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg",
 category: "category"}]
 const fakeCat = ["vegetal","mineral"]
 
