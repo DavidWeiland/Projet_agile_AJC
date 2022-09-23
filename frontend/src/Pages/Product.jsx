@@ -13,10 +13,10 @@ function App() {
     const navigate=useNavigate()
     
     useEffect(() => {
-        onclickfunction(id)
+        getOneProduct(id)
     }, [id])
     
-    const onclickfunction=(id)=>{
+    const getOneProduct=(id)=>{
         fetch(`https://fakestoreapi.com/products/${id}`)
         .then(res=>res.json())
         .then (json=>setData(json))
